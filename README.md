@@ -6,9 +6,20 @@ Anggota Kelompok:
 * Pujo Prayogo (140810200038)
 ---
 ## Latar Belakang
+Adanya globalisasi di era modern ini berdampak pada masuknya budaya asing yang dengan mudahnya masuk ke budaya lokal. Tentu saja budaya asing tersebut banyak yang bersifat positif, namun tidak sedikit pula yang bersifat negatif. Hal itu dikarenakan tidak adanya filterisasi terhadap budaya asing yang masuk. Banyak dampak yang diberikan dari pengaruh negatif tersebut, salah satunya adalah perubahan gaya hidup manusia, contohnya adalah timbul sikap bergaya hidup mewah dan boros karena status seseorang di dalam masyarakat diukur berdasarkan kekayaannya, tidak terkecuali masyarakat Indonesia. Masyarakat Indonesia cenderung bersifat konsumtif dan suka menghabiskan uang, apalagi dengan adanya e-commerce yang makin memudahkan masyarakat untuk berbelanja. Bila kegiatan ini tidak sebanding dengan anggaran yang dimiliki, maka bisa mengakibatkan kemiskinan atau bahkan hutang yang membludak.
+Maka dari itu, dibutuhkan pengelolaan keuangan yang baik yaitu dengan mencatat setiap pemasukan dan pengeluaran uang. 
 
 
 ## Tujuan dan Manfaat
+    Tujuan : 
+      Membantu seseorang untuk mengatur dan mengelola keuangannya.
+    Manfaat :
+      Mencatat Pemasukan Keuangan
+      Mencatat pengeluaran keuangan
+      Membuat seseorang mengetahui tabungan yang dia punya 
+      Membuat seseorang  lebih hemat.
+      Memberikan data keuangan pengguna.
+
 
 ## Penjelasan Aplikasi
 
