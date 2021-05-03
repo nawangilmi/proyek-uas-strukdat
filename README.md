@@ -1,9 +1,9 @@
-# JUDUL_PROYEK
+# Sistem Pengelolaan Keuangan 
 
 Anggota Kelompok:
-* NAMA (NPM)
-* NAMA (NPM)
-* NAMA (NPM)
+* Aulia Rahmanita (140810200004)
+* Nawang Ilmi Adzani (140810200014)
+* Pujo Prayogo (140810200038)
 ---
 ## Latar Belakang
 
