@@ -42,6 +42,7 @@ Pertama, Pengguna akan masuk ke menu yang berisi :
 3. Menampilkan Total Uang
 4. Menampilkan data-data Keuangan (rata-rata pemasukan/pengeluaran perbulan,pemasukkan/pengeluaran terbesar,pemasukkan/pengeluaran perharinya)
 Dan akan ada input untuk memasukkan menu yang ingin dipilih.
+
 Jika mengetik angka 1, ada kolom untuk memasukkan tanggal, jumlah uang yang masuk, dan keterangan. Setelah data diinput, akan ada 2 pilihan yaitu menambahkan uang masuk atau kembali ke menu utama.
 Jika mengetik angka 2, ada kolom untuk memasukkan tanggal, jumlah uang yang keluar, dan keterangan. Setelah data diinput, akan ada 2 pilihan yaitu menambahkan data uang yang keluar atau kembali ke menu utama.
 Jika mengetik angka 3, data yang keluar adalah jumlah uang pengguna.
