@@ -53,12 +53,6 @@ Setiap kali pengguna kembali ke menu utama, pengguna akan mendapati 2 pilihan ya
 Dikarenakan Pandemi Covid-19 yang menyebabkan kami tidak bisa bertemu, maka dari itu kami berdiskusi melalui sosial media yaitu line dan terkadang bila dibutuhkan, kami menggunakan discord biar lebih mudah dalam berdiskusi.Lalu kami pun memakai gslide untuk membuat powerpoint dan github untuk membuat aplikasinya.
 Untuk pembagian tugas, kami masih mengerjakannya secara bersamaan. Kami masih belum memiliki pembagian tugas yang detail.
 
-## Gambar Rancangan Antar Muka
-<!--
-Dalam kondisi pandemi seperti ini, tidak memungkinkan untuk bertemu bertatap muka. Maka dari itu
-jelaskan bagaimana kalian bekerja sama, berkoordinasi, pembagian kerja.Tools apa yang kalian gunakan
-untuk bekerja bersama sama cth github, google docs, google meet>ibebaskan sesuai kreatifitas kalian
-!-->
 
 
 ## Lisensi
