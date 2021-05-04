@@ -1,4 +1,4 @@
-# Sistem Pengelolaan Keuangan 
+# BudgetinAja
 
 Anggota Kelompok:
 * Aulia Rahmanita (140810200004)
