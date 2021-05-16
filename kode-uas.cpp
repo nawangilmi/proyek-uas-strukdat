@@ -1,15 +1,10 @@
 /* 
+Kelompok 3 :
 
-
-
-
-
-
-
+ Aulia Rahmanita 140810200004
+ Nawang Ilmi Adzani 140810200014
+ Pujo Prayogo 1408102000038
 */
-
-
-
 
 #include <iostream>
 
@@ -47,10 +42,8 @@ void DataKeuangan(){
 
     switch(pilih){
         case 1 :
-            std::cout << "dadadsd";
             break;
         case 2 :
-            std::cout << "dadadsd";
             break;
         
     }
