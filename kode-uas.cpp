@@ -27,6 +27,12 @@ void InputPemasukkan(){
 void InputPengeluaran(){
 
 }
+void Total (){}
+void RatarataPemasukan(){}
+void RatarataPengeluaran(){}
+void MaxMasuk(){}
+void MaxKeluar(){}
+
 
 void DataKeuangan(){
     int pilih;
@@ -37,13 +43,26 @@ void DataKeuangan(){
     std::cout << "4. Pengeluaran Terbesar\n";
     std::cout << "5. \n";
     std::cout << "6. \n";
+    std::cout << "7. Back \n"; // ini harus ada atau ga tapi gimana 
     std::cout << "Masukkan Pilihan :";
     std::cin >> pilih;
 
     switch(pilih){
         case 1 :
+            RatarataPemasukan();
             break;
         case 2 :
+            RatarataPengeluaran();
+            break;
+        case 3 :
+            MaxMasuk();
+            break;
+        case 4 :
+            MaxKeluar();
+            break;
+        case 5:
+            break;
+        case 6:
             break;
         
     }
@@ -73,7 +92,7 @@ int main(){
         InputPengeluaran();
         break;
     case 3:
-        
+        Total();
         break;
     case 4:
         DataKeuangan();
