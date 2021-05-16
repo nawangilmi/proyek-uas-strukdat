@@ -97,9 +97,6 @@ int main(){
     case 4:
         DataKeuangan();
         break;
-
-    default:
-        break;
     }
     std::cout<<std::endl;
 		system("pause");
