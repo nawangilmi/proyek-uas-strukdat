@@ -27,10 +27,50 @@ void InputPemasukkan(){
 void InputPengeluaran(){
 
 }
-void Total (){}
+
+
+void TampilkanPemasukan(pMasuk& First){
+    if (First== nullptr)
+        cout << "tidak ada uang yang dimasukan!";
+    else{
+        pointer pBantu = First;
+        while(pBantu != nullptr){
+            cout << pBantu->data << ' ';
+            pBantu = pBantu->next;
+        }
+        cout << '\n';
+    }
+}
+
+void TampilkanPengeluaran(pKeluar& First){
+    if (First== nullptr)
+        cout << "tidak ada uang yang dimasukan!";
+    else{
+        pointer pBantu = First;
+        while(pBantu != nullptr){
+            cout << pBantu->data << ' ';
+            pBantu = pBantu->next;
+        }
+        cout << '\n';
+    }
+}
+
+
+void Total (){
+    int total = 0;
+    while (head!= NULL){
+        total(head->next);
+        total += head->data;
+        return total;
+    }
+   cout << "Total : " << endl;
+}
 void RatarataPemasukan(){}
+
 void RatarataPengeluaran(){}
+
 void MaxMasuk(){}
+
 void MaxKeluar(){}
 
 
@@ -70,7 +110,9 @@ void DataKeuangan(){
 }
 
 int main(){
+    int total = 0;
     int pilih;
+    char pilih1;
     do{
     system("cls");
     std::cout << "==================================\n";
@@ -78,8 +120,10 @@ int main(){
     std::cout << "==================================\n";
     std::cout << "1. Isi Pemasukkan                 \n";
     std::cout << "2. Isi Pengeluaran                \n";
-    std::cout << "3. Total Uang                     \n";
-    std::cout << "4. Data - data Keuangan           \n";
+    std::cout << "3. Tampilkan Pemasukan            \n";
+    std::cout << "4. Tampilkan Pengeluaran          \n";
+    std::cout << "5. Total Uang                     \n";
+    std::cout << "6. Data - data Keuangan           \n";
     std::cout << "Masukkan Pilihan :";
     std::cin >> pilih;
 
@@ -92,13 +136,23 @@ int main(){
         InputPengeluaran();
         break;
     case 3:
-        Total();
+        TampilkanPemasukkan(First);
         break;
     case 4:
+        TampilkanPengeluaran(First);
+        break;
+    case 5:
+        Total();
+        break;
+    case 6:
         DataKeuangan();
         break;
+    default : 
+        std::cout << "Pilihan tidak tersedia!";
+        break;  
     }
-    std::cout<<std::endl;
+    std::cout"Kembali ke menu awal (y/n)?";std::cin >> pil1;
 		system("pause");
-    } while (pilih!=5);
+    } while (pilih1=='Y' || pilih1=='y');
+    return 0;
 }
