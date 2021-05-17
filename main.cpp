@@ -44,13 +44,7 @@ void createElementTgl(pTanggal& pBaru){
     pBaru-> firstKeluar = nullptr;
 }
 
-void InputPemasukkan(pMasuk& pBaru){
-    pBaru = new masuk;
-    std::cout<<"Masukkan Uang yang masuk: " ; std::cin>>pBaru->uangmasuk;
-    pBaru->nextMasuk = nullptr;
-}
-
-void insertFirstPeg(listTanggal& First,pTanggal pBaru){
+void insertFirstTgl(listTanggal& First,pTanggal pBaru){
 if (First== nullptr) {
 		First=pBaru; 
         } else { 
@@ -59,19 +53,26 @@ if (First== nullptr) {
 	}
 }
 
+void InputPemasukkan(pMasuk& pBaru){
+    pBaru = new masuk;
+    std::cout<<"Masukkan Uang yang masuk: " ; std::cin>>pBaru->uangmasuk;
+    pBaru->nextMasuk = nullptr;
+}
+
+
 void InputPengeluaran(pKeluar& pBaru){
 pBaru = new keluar;
     std::cout<<"Masukkan Uang yang masuk: " ; std::cin>>pBaru->uangkeluar;
     pBaru->nextKeluar = nullptr;
 }
 
-void linearSearch(listTanggal First, std::string& key, pTanggal& pCari){
+void linearSearch(listTanggal First, std::string& tanggal, pTanggal& pCari){
     pCari = First;
     int ketemu;
     ketemu = 0;
 
     while (pCari != nullptr && ketemu == 0){
-        if (pCari->tgl == key){
+        if (pCari->tgl == tanggal){
             ketemu = 1;
         } else{
             pCari = pCari->nextTgl;
@@ -84,64 +85,64 @@ void linearSearch(listTanggal First, std::string& key, pTanggal& pCari){
     }
 }
 
-void insertFirstMasuk(listTanggal& First, std::string key,pMasuk pBaru){
+void insertFirstMasuk(listTanggal& First, std::string tanggal,pMasuk pBaru){
     // I.S List First mungkin kosong dan pBaru sudah terdefinisi
     // F.S Elemen anak bertambah satu elemen di depan
-    pTanggal pOrtu, pCari;
+    pTanggal pMasuk, pCari;
     int ketemu,id;
 
     std::cout << "masukan Tanggal : ";
-    std::cin >> key; 
-    linearSearch(First, key, pCari);
-    pOrtu = First;
+    std::cin >> tanggal; 
+    linearSearch(First, tanggal, pCari);
+    pMasuk = First;
     ketemu = 0;
-    while (pOrtu != nullptr && ketemu==0) { //!ketemu
-        if (pOrtu->tgl==key){
+    while (pMasuk != nullptr && ketemu==0) { //!ketemu
+        if (pMasuk->tgl==tanggal){
             ketemu=1;
         }
         else{
-            pOrtu=pOrtu->nextTgl;
+            pMasuk=pMasuk->nextTgl;
         }
     }
     
     if (ketemu){ // (ketemu==1)
-        if (pOrtu-> firstMasuk == nullptr){
-            pOrtu-> firstMasuk = pBaru;
+        if (pMasuk-> firstMasuk == nullptr){
+            pMasuk-> firstMasuk = pBaru;
         }
         else {
-            pBaru->nextMasuk = pOrtu->firstMasuk;
-            pOrtu->firstMasuk = pBaru;
+            pBaru->nextMasuk = pMasuk->firstMasuk;
+            pMasuk->firstMasuk = pBaru;
         }
     }
 }
 
-void insertFirstKeluar(listTanggal& First, std::string key,pKeluar pBaru){
+void insertFirstKeluar(listTanggal& First, std::string tanggal,pKeluar pBaru){
     // I.S List First mungkin kosong dan pBaru sudah terdefinisi
     // F.S Elemen anak bertambah satu elemen di depan
-    pTanggal pOrtu, pCari;
+    pTanggal pKeluar, pCari;
     int ketemu,id;
 
     std::cout << "Masukan Tanggal : ";
-    std::cin >> key; 
-    linearSearch(First, key, pCari);
-    pOrtu = First;
+    std::cin >> tanggal; 
+    linearSearch(First, tanggal, pCari);
+    pKeluar = First;
     ketemu = 0;
-    while (pOrtu != nullptr && ketemu==0) { //!ketemu
-        if (pOrtu->tgl==key){
+    while (pKeluar != nullptr && ketemu==0) { //!ketemu
+        if (pKeluar->tgl==tanggal){
             ketemu=1;
         }
         else{
-            pOrtu=pOrtu->nextTgl;
+            pKeluar=pKeluar->nextTgl;
         }
     }
     
     if (ketemu){ // (ketemu==1)
-        if (pOrtu-> firstKeluar == nullptr){
-            pOrtu-> firstKeluar = pBaru;
+        if (pKeluar-> firstKeluar == nullptr){
+            pKeluar-> firstKeluar = pBaru;
         }
         else {
-            pBaru->nextKeluar = pOrtu->firstKeluar;
-            pOrtu->firstKeluar = pBaru;
+            pBaru->nextKeluar = pKeluar->firstKeluar;
+            pKeluar->firstKeluar = pBaru;
         }
     }
 }
@@ -150,8 +151,9 @@ void insertFirstKeluar(listTanggal& First, std::string key,pKeluar pBaru){
 void TampilkanPemasukan(listTanggal& First){
     pTanggal pBantuTgl;
     pMasuk pBantuMsk;
-    std::cout<<"\nSeluruh Transaksi Uang Masuk"<<std::endl<<std::endl;
-	std::cout<<"----------------------------------"<<std::endl;
+    std::cout<<"----------------------------------\n";
+    std::cout<<"   Seluruh Transaksi Uang Masuk   \n";
+	std::cout<<"----------------------------------\n";
     pBantuTgl=First;
     while (pBantuTgl != nullptr){ //loop ortu
         std::cout<< pBantuTgl->tgl <<std::endl;
@@ -167,8 +169,9 @@ void TampilkanPemasukan(listTanggal& First){
 void TampilkanPengeluaran(listTanggal& First){
     pTanggal pBantuTgl;
     pKeluar pBantuKeluar;
-    std::cout<<"\nSeluruh Transaksi Uang Keluar"<<std::endl<<std::endl;
-	std::cout<<"----------------------------------"<<std::endl;
+    std::cout<<"----------------------------------\n";
+    std::cout<<"   Seluruh Transaksi Uang Keluar  \n";
+	std::cout<<"----------------------------------\n";
     pBantuTgl=First;
     while (pBantuTgl != nullptr){ //loop ortu
         std::cout<< pBantuTgl->tgl <<std::endl;
@@ -195,13 +198,16 @@ void MaxKeluar(){}
 
 void DataKeuangan(){
     int pilih;
-    std::cout << "=== Data Keuangan ===" << "\n";
+    system("cls");
+    std::cout << "==================================\n";
+    std::cout << "        Data-data Keuangan        \n";
+    std::cout << "==================================\n";
     std::cout << "1. Rata-rata Pemasukkan\n";
     std::cout << "2. Rata-rata Pengeluaran\n";
     std::cout << "3. Pemasukkan Terbesar\n";
     std::cout << "4. Pengeluaran Terbesar\n";
-    std::cout << "5. Back \n"; // ini harus ada atau ga tapi gimana 
-    std::cout << "Masukkan Pilihan :";
+    std::cout << "5. Back \n"; 
+    std::cout << "Masukkan Pilihan : ";
     std::cin >> pilih;
 
     switch(pilih){
@@ -219,8 +225,9 @@ void DataKeuangan(){
             break;
         case 5:
             break;
-        case 6:
-            break;
+        default : 
+            std::cout << "Pilihan tidak tersedia!\n";
+            break; 
         
     }
 
@@ -249,14 +256,14 @@ int main(){
     std::cout << "5. Tampilkan Pengeluaran          \n";
     std::cout << "6. Total Uang                     \n";
     std::cout << "7. Data - data Keuangan           \n";
-    std::cout << "Masukkan Pilihan :";
+    std::cout << "Masukkan Pilihan : ";
     std::cin >> pilih;
 
     switch (pilih)
     {
     case 1:
         createElementTgl(tgl);
-        insertFirstPeg(head,tgl);
+        insertFirstTgl(head,tgl);
         break;
     case 3:
         InputPengeluaran(keluar);
@@ -267,9 +274,11 @@ int main(){
         insertFirstMasuk(head,data,masuk);
         break;
     case 4:
+        system("cls");
         TampilkanPemasukan(head);
         break;
     case 5:
+        system("cls");
         TampilkanPengeluaran(head);
         break;
     case 6:
@@ -279,7 +288,7 @@ int main(){
         DataKeuangan();
         break;
     default : 
-        std::cout << "Pilihan tidak tersedia!";
+        std::cout << "Pilihan tidak tersedia!\n";
         break;  
     }
     std::cout <<"Kembali ke menu awal (y/n)?";
