@@ -59,7 +59,7 @@ if (First== nullptr) {
 	}
 }
 
-void InputPengeluaran(pKeluar pBaru){
+void InputPengeluaran(pKeluar& pBaru){
 pBaru = new keluar;
     std::cout<<"Masukkan Uang yang masuk: " ; std::cin>>pBaru->uangkeluar;
     pBaru->nextKeluar = nullptr;
