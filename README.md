@@ -6,7 +6,6 @@ Anggota Kelompok:
 * Pujo Prayogo (140810200038)
 ---
 ## Latar Belakang
-<<<<<<< HEAD
 Kata globalisasi sering terdengar dalam kehidupan sehari-hari. Globalisasi
 adalah hal yang tidak dapat dipungkiri atau dihindari. Menurut Anggara (2013)
 “Globalisasi diambil dari kata global, yang maknanya ialah universal. Globalisasi
@@ -33,7 +32,6 @@ Kata globalisasi sering terdengar dalam kehidupan sehari-hari. Globalisasi adala
 informasi secara mendunia melalui media cetak maupun elektronik”.
 
 Adanya globalisasi di era modern ini berdampak pada masuknya budaya asing yang dengan mudahnya masuk ke budaya lokal. Tentu saja budaya asing tersebut banyak yang bersifat positif, namun tidak sedikit pula yang bersifat negatif. Hal itu dikarenakan tidak adanya filterisasi terhadap budaya asing yang masuk. Banyak dampak yang diberikan dari pengaruh negatif tersebut, salah satunya adalah perubahan gaya hidup manusia, contohnya adalah timbul sikap bergaya hidup mewah dan boros karena status seseorang di dalam masyarakat diukur berdasarkan kekayaannya, tidak terkecuali masyarakat Indonesia. Masyarakat Indonesia cenderung bersifat konsumtif dan suka menghabiskan uang, apalagi dengan adanya e-commerce yang makin memudahkan masyarakat untuk berbelanja. Bila kegiatan ini tidak sebanding dengan anggaran yang dimiliki, maka bisa mengakibatkan kemiskinan atau bahkan hutang yang membludak.
->>>>>>> 0541ffcedca35eedb56d874d2e1ad75d62a4dafa
 
 Pengelolaan keuangan(money management) pada umumnya merupakan suatu kegiatan pengelolaan dana dalam kehidupan sehari-hari yang dilakukan oleh seorang individu atau kelompok yang memiliki tujuan untuk memperoleh kesejahteraan keuangan (financial welfare). Dalam mencapai kesejahteraan tersebut, dibutuhkan pengelolaan keuangan yang baik sehingga uang bisa digunakan sesuai dengan kebutuhan dan tidak dihambur-hamburkan. Untuk bisa menerapkan proses pengelolaan keuangan yang baik, maka dibutuhkan
 tanggung jawab keuangan untuk melakukan proses pengelolaan uang dan aset lainnya dengan cara yang dianggap positif (Ida dan CinthiaY.D., 2010).
