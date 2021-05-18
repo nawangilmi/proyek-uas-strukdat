@@ -64,7 +64,7 @@ void TampilkanPemasukan(listMasuk& First){
  if(First == nullptr){
      std::cout << "Data tidak tersedia!\n";
     } else {
-        masuk pBantu;
+        masuk* pBantu;
         pBantu = First;
         std::cout << "----------------------------\n";
         std::cout << "    TRANSAKSI UANG MASUK    \n";
@@ -80,7 +80,7 @@ void TampilkanPengeluaran(listKeluar& First){
  if(First == nullptr){
      std::cout << "Data tidak tersedia!\n";
     } else {
-        keluar pBantu;
+        keluar* pBantu;
         pBantu = First;
         std::cout << "----------------------------\n";
         std::cout << "    TRANSAKSI UANG MASUK   \n";
@@ -95,13 +95,13 @@ void TampilkanPengeluaran(listKeluar& First){
 void Total (){
 
 }
-void RatarataPemasukan(listMasuk *first){
-     int count = 0;
+void RatarataPemasukan(listMasuk *First){
+    int count = 0;
     int sum = 0;
     float mean;
-    masuk curr = first; //
+    masuk** curr = First; //
 
-     if (first == NULL){
+     if (First == NULL){
         std::cout << -1;} 
     while (curr != NULL){
         count++; 
@@ -113,13 +113,13 @@ void RatarataPemasukan(listMasuk *first){
     std::cout << "Rata - Rata : "<< mean; //mengoutputkan nilai ratarata
 }
 
-void RatarataPengeluaran(listKeluar *first){
-    int count=0;
+void RatarataPengeluaran(listKeluar *First){
+    int count = 0;
     int sum = 0;
     float mean;
-    keluar curr = first; //
+    keluar** curr = First; //
 
-     if (first == NULL){
+     if (First == NULL){
         std::cout << -1;} 
     while (curr != NULL){
         count++; 
@@ -132,8 +132,8 @@ void RatarataPengeluaran(listKeluar *first){
 }
 
 void MaxMasuk(listMasuk& First){
-    char *max = 0;
-    masuk pBaru ;
+    int* max = 0;
+    masuk* pBaru ;
     pBaru = First;
         while (pBaru != NULL) {
         if (pBaru->uangmasuk > max) 
@@ -143,8 +143,8 @@ void MaxMasuk(listMasuk& First){
     }
 
 void MaxKeluar(listKeluar& First){
-    char *max = 0;
-    keluar pBaru ;
+    int* max = 0;
+    keluar* pBaru ;
     pBaru = First;
         while (pBaru != NULL) {
         if (pBaru->uangkeluar > max) 
@@ -173,10 +173,10 @@ void DataKeuangan(){
 
     switch(pilih){
         case 1 :
-            RatarataPemasukan();
+            RatarataPemasukan(FirstMasuk);
             break;
         case 2 :
-            RatarataPengeluaran();
+            RatarataPengeluaran(FirstKeluar);
             break;
         case 3 :
             MaxMasuk(FirstMasuk);
@@ -195,7 +195,10 @@ void DataKeuangan(){
 }
 
 int main(){
-    int total = 0;
+    int *max = 0;
+    int count = 0;
+    int sum = 0;
+    float mean;
     int pilih;
     char pilih1;
     pMasuk masuk;
