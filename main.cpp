@@ -1,3 +1,4 @@
+
 /* 
 Kelompok 3 :
  Aulia Rahmanita 140810200004
@@ -10,165 +11,286 @@ Kelompok 3 :
 
 struct masuk{
     int uangmasuk;
-    char tanggal[30];
     masuk* nextMasuk;
 };
 
 struct keluar{
     int uangkeluar;
-    char tanggal[30];
     keluar* nextKeluar;
+};
+
+struct tanggal{
+    char tgl[15];
+    masuk* firstMasuk;
+    keluar* firstKeluar;
+    tanggal* nextTgl; 
 };
 
 
 typedef masuk* pMasuk;
-typedef pMasuk listMasuk;
 typedef keluar* pKeluar;
-typedef pKeluar listKeluar;
+typedef tanggal* pTanggal;
+typedef pTanggal listTanggal;
 
-void createElementmasuk(pMasuk& pBaru){
+void createListTgl(listTanggal& First){
+    First = nullptr;
+}
+
+void createElementTgl(pTanggal& pBaru){
+    pBaru = new tanggal;
+    std::cout<<"Masukkan Tanggal (DD/MM/YY) : " ; std::cin>>pBaru->tgl;
+    pBaru->nextTgl = nullptr;
+    pBaru-> firstMasuk = nullptr;
+    pBaru-> firstKeluar = nullptr;
+}
+
+void insertFirstTgl(listTanggal& First,pTanggal pBaru){
+if (First== nullptr) {
+		First=pBaru; 
+        } else { 
+		pBaru-> nextTgl=First;
+		First=pBaru;
+	}
+}
+
+void InputPemasukkan(pMasuk& pBaru){
     pBaru = new masuk;
-    std::cout<<"Masukkan jumlah uang yang masuk : " ; std::cin>>pBaru->uangmasuk;
-    std::cout<<"Masukkan tanggal (DD/MM/YYYY) : " ; std::cin>>pBaru->tanggal;
-    pBaru->nextMasuk= nullptr;
+    std::cout<<"Masukkan Uang yang masuk : " ; std::cin>>pBaru->uangmasuk;
+    pBaru->nextMasuk = nullptr;
 }
 
-void insertFirstMasuk(listMasuk& First,pMasuk pBaru){
-if (First == nullptr){
-    First = pBaru;
-  } else{
-  	pMasuk temp = First;
-    while (temp->nextMasuk != nullptr) {
-      temp = temp->nextMasuk;
+
+void InputPengeluaran(pKeluar& pBaru){
+pBaru = new keluar;
+    std::cout<<"Masukkan Uang yang keluar : " ; std::cin>>pBaru->uangkeluar;
+    pBaru->nextKeluar = nullptr;
+}
+
+void linearSearch(listTanggal First, std::string& tanggal, pTanggal& pCari){
+    pCari = First;
+    int ketemu;
+    ketemu = 0;
+
+    while (pCari != nullptr && ketemu == 0){
+        if (pCari->tgl == tanggal){
+            ketemu = 1;
+        } else{
+            pCari = pCari->nextTgl;
+        }
     }
-    temp->nextMasuk = pBaru;
-  }
-}
-
-void createElementKeluar(pKeluar& pBaru){
-    pBaru = new keluar;
-    std::cout<<"Masukkan jumlah uang yang keluar : " ; std::cin>>pBaru->uangkeluar;
-    std::cout<<"Masukkan tanggal (DD/MM/YYYY) : " ; std::cin>>pBaru->tanggal;
-    pBaru-> nextKeluar= nullptr;
-}
-
-void insertFirstKeluar(listKeluar& First,pKeluar pBaru){
-if (First == nullptr){
-    First = pBaru;
-  } else{
-  	pKeluar temp = First;
-    while (temp->nextKeluar != nullptr) {
-      temp = temp->nextKeluar;
-    }
-    temp->nextKeluar = pBaru;
-  }
-}
-
-
-void TampilkanPemasukan(listMasuk& First){
- if(First == nullptr){
-     std::cout << "Data tidak tersedia!\n";
+    if (ketemu == 1){
+        std::cout << "";
     } else {
-        pMasuk pBantu;
-        pBantu = First;
-        std::cout << "----------------------------\n";
-        std::cout << "    TRANSAKSI UANG MASUK    \n";
-        std::cout << "----------------------------\n";
-        while (pBantu != nullptr){
-            std::cout << "Tanggal       : " << pBantu->tanggal << std::endl;
-            std::cout << "Uang Masuk    :" << pBantu->uangmasuk << std::endl;
-             pBantu = pBantu->nextMasuk;
+        std::cout << "";
+    }
+}
+
+void insertFirstMasuk(listTanggal& First, std::string tanggal,pMasuk pBaru){
+    // I.S List First mungkin kosong dan pBaru sudah terdefinisi
+    // F.S Elemen anak bertambah satu elemen di depan
+    pTanggal pMasuk, pCari;
+    int ketemu,id;
+
+    std::cout << "masukan Tanggal : ";
+    std::cin >> tanggal; 
+    linearSearch(First, tanggal, pCari);
+    pMasuk = First;
+    ketemu = 0;
+    while (pMasuk != nullptr && ketemu==0) { //!ketemu
+        if (pMasuk->tgl==tanggal){
+            ketemu=1;
+        }
+        else{
+            pMasuk=pMasuk->nextTgl;
+        }
+    }
+    
+    if (ketemu){ // (ketemu==1)
+        if (pMasuk-> firstMasuk == nullptr){
+            pMasuk-> firstMasuk = pBaru;
+        }
+        else {
+            pBaru->nextMasuk = pMasuk->firstMasuk;
+            pMasuk->firstMasuk = pBaru;
         }
     }
 }
 
-void TampilkanPengeluaran(listKeluar& First){
- if(First == nullptr){
-     std::cout << "Data tidak tersedia!\n";
-    } else {
-        pKeluar pBantu;
-        pBantu = First;
-        std::cout << "----------------------------\n";
-        std::cout << "    TRANSAKSI UANG KELUAR   \n";
-        std::cout << "----------------------------\n";
-        while (pBantu != nullptr){
-            std::cout << "Tanggal       : " << pBantu->tanggal << std::endl;
-            std::cout << "Uang Masuk    :" << pBantu->uangkeluar << std::endl;
-            pBantu = pBantu->nextKeluar;
+void insertFirstKeluar(listTanggal& First, std::string tanggal,pKeluar pBaru){
+    // I.S List First mungkin kosong dan pBaru sudah terdefinisi
+    // F.S Elemen anak bertambah satu elemen di depan
+    pTanggal pKeluar, pCari;
+    int ketemu,id;
+
+    std::cout << "Masukan Tanggal : ";
+    std::cin >> tanggal; 
+    linearSearch(First, tanggal, pCari);
+    pKeluar = First;
+    ketemu = 0;
+    while (pKeluar != nullptr && ketemu==0) { //!ketemu
+        if (pKeluar->tgl==tanggal){
+            ketemu=1;
+        }
+        else{
+            pKeluar=pKeluar->nextTgl;
+        }
+    }
+    
+    if (ketemu){ // (ketemu==1)
+        if (pKeluar-> firstKeluar == nullptr){
+            pKeluar-> firstKeluar = pBaru;
+        }
+        else {
+            pBaru->nextKeluar = pKeluar->firstKeluar;
+            pKeluar->firstKeluar = pBaru;
         }
     }
 }
 
-void Total (){
 
+void TampilkanPemasukan(listTanggal& First){
+    pTanggal pBantuTgl;
+    pMasuk pBantuMsk;
+    std::cout<<"----------------------------------\n";
+    std::cout<<"   Seluruh Transaksi Uang Masuk   \n";
+	std::cout<<"----------------------------------\n";
+    pBantuTgl=First;
+    while (pBantuTgl != nullptr){ 
+        std::cout<< pBantuTgl->tgl <<std::endl;
+        pBantuMsk=pBantuTgl->firstMasuk;
+        while (pBantuMsk!= nullptr) { 
+            std::cout<<" "<<pBantuMsk->uangmasuk<<std::endl;
+            pBantuMsk=pBantuMsk->nextMasuk;
+        }
+        pBantuTgl=pBantuTgl->nextTgl;
+    }
 }
 
-void RatarataPemasukan(listMasuk& First){
-    int count = 0;
-    int sum = 0;
-    float mean;
+void TampilkanPengeluaran(listTanggal& First){
+    pTanggal pBantuTgl;
+    pKeluar pBantuKeluar;
+    std::cout<<"----------------------------------\n";
+    std::cout<<"   Seluruh Transaksi Uang Keluar  \n";
+	std::cout<<"----------------------------------\n";
+    pBantuTgl=First;
+    while (pBantuTgl != nullptr){ 
+        std::cout<< pBantuTgl->tgl <<std::endl;
+        pBantuKeluar=pBantuTgl->firstKeluar;
+        while (pBantuKeluar!= nullptr) { 
+            std::cout<<" "<<pBantuKeluar->uangkeluar<<std::endl;
+            pBantuKeluar=pBantuKeluar->nextKeluar;
+        }
+        pBantuTgl=pBantuTgl->nextTgl;
+    }
+}
+
+
+void RatarataPemasukan(listTanggal& First){
+    int countmsk = 0;
+    int summsk = 0;
+    float meanmsk;
     pMasuk curr;
-    curr = First;
-
-     if (First == nullptr){
+     pTanggal pBantuTgl;
+    pMasuk pBantuMsk;
+    std::cout<<"----------------------------------\n";
+    std::cout<<"   rata rata Uang Masuk  \n";
+	std::cout<<"----------------------------------\n";
+    pBantuTgl=First;
+    while (pBantuTgl != nullptr){ 
+        std::cout<< pBantuTgl->tgl <<std::endl;
+        pBantuMsk=pBantuTgl->firstMasuk;
+        if (First == NULL){
         std::cout << -1;} 
-    while (curr != nullptr){
-        count++; 
-        sum += curr->uangmasuk; 
-        curr = curr->nextMasuk;
-    }
-    mean = (double)sum / count;
-  
-    std::cout << "Rata - Rata : "<< mean << std::endl;
+    while (pBantuMsk != NULL){
+        countmsk++; 
+        summsk += pBantuMsk->uangmasuk; 
+        pBantuMsk = pBantuMsk->nextMasuk;
+        }
+    } 
+    meanmsk = (double)summsk / countmsk; //menghitung rata-rata
+    std::cout << "Rata - Rata : "<< meanmsk; //mengoutputkan nilai ratarata
+    pBantuTgl=pBantuTgl->nextTgl;
+    
 }
 
-void RatarataPengeluaran(listKeluar& First){
-    int count = 0;
-    int sum = 0;
-    float mean;
+void RatarataPengeluaran(listTanggal& First){
+    int countklr = 0;
+    int sumklr = 0;
+    float meanklr;
     pKeluar curr;
-    curr = First;
-
-    if (First == nullptr){
+     pTanggal pBantuTgl;
+    pKeluar pBantuKeluar;
+    std::cout<<"----------------------------------\n";
+    std::cout<<"      rata rata Uang Keluar       \n";
+	std::cout<<"----------------------------------\n";
+    pBantuTgl=First;
+    while (pBantuTgl != nullptr){ 
+        std::cout<< pBantuTgl->tgl <<std::endl;
+        pBantuKeluar=pBantuTgl->firstKeluar;
+        if (First == NULL){
         std::cout << -1;} 
-    while (curr != nullptr){
-        count++; 
-        sum += curr->uangkeluar; 
-        curr = curr->nextKeluar;
-    }
-    mean = (double)sum/count;
-  
-    std::cout << "Rata - Rata Pengeluaran : "<< mean << std::endl;
+    while (pBantuKeluar != NULL){
+        countklr++; 
+        sumklr += pBantuKeluar->uangkeluar; 
+        pBantuKeluar = pBantuKeluar->nextKeluar;
+        }   
+    } 
+    meanklr = (double)sumklr / countklr; //menghitung rata-rata
+    std::cout << "Rata - Rata : "<< meanklr; //mengoutputkan nilai ratarata
+    pBantuTgl=pBantuTgl->nextTgl;
+    
 }
 
-void MaxMasuk(listMasuk& First){
-    int max = 0;
+void MaxMasuk(listTanggal& First){
+    int maxmsk = 0;
     pMasuk pBaru ;
-    pBaru = First;
-        while (pBaru != nullptr) {
-        if (pBaru->uangmasuk > max) 
-            max = pBaru->uangmasuk; 
+    pTanggal pBantuTgl;
+    pMasuk pBantuMsk;
+    std::cout<<"----------------------------------\n";
+    std::cout<<"       Uang Masuk Terbesar        \n";
+	std::cout<<"----------------------------------\n";
+    pBantuTgl=First;
+    while (pBantuTgl != nullptr){ 
+        std::cout<< pBantuTgl->tgl <<std::endl;
+        pBantuMsk=pBantuTgl->firstMasuk;
+        while (pBaru != NULL) {
+        if (pBaru->uangmasuk > maxmsk) 
+            maxmsk = pBaru->uangmasuk; 
     }  pBaru = pBaru->nextMasuk;
-    std::cout << "Pemasukkan Terbesar : " << max << std::endl;     
+    
+        }
+        std::cout << "Pemasukkan Terbesar : " << maxmsk; 
+        pBantuTgl=pBantuTgl->nextTgl;
     }
+        
 
-void MaxKeluar(listKeluar& First){
-    int max = 0;
+
+void MaxKeluar(listTanggal& First){
+    int maxklr = 0;
     pKeluar pBaru ;
-    pBaru = First;
-        while (pBaru != nullptr) {
-        if (pBaru->uangkeluar > max) 
-            max = pBaru->uangkeluar; 
+    pTanggal pBantuTgl;
+    pKeluar pBantuKeluar;
+    std::cout<<"----------------------------------\n";
+    std::cout<<"       Uang Keluar Terbesar       \n";
+	std::cout<<"----------------------------------\n";
+    pBantuTgl=First;
+    while (pBantuTgl != nullptr){ //loop ortu
+        std::cout<< pBantuTgl->tgl <<std::endl;
+        pBantuKeluar=pBantuTgl->firstKeluar;
+        while (pBaru != NULL) {
+        if (pBaru->uangkeluar > maxklr) 
+            maxklr = pBaru->uangkeluar; 
     }  pBaru = pBaru->nextKeluar;
-    std::cout << "Pengeluaran Terbesar : " << max << std::endl;    
+    
+        }
+        std::cout << "Pengeluaran Terbesar : " << maxklr; 
+        pBantuTgl=pBantuTgl->nextTgl;
 }
+
 
 void DataKeuangan(){
-    listMasuk FirstMasuk;
-    listKeluar FirstKeluar;
-    pMasuk masuk;
-    pKeluar keluar;
     int pilih;
+    listTanggal head;
     system("cls");
     std::cout << "==================================\n";
     std::cout << "        Data-data Keuangan        \n";
@@ -183,44 +305,47 @@ void DataKeuangan(){
 
     switch(pilih){
         case 1 :
-            RatarataPemasukan(FirstMasuk);
+            RatarataPemasukan(head);
             break;
         case 2 :
-            RatarataPengeluaran(FirstKeluar);
+            RatarataPengeluaran(head);
             break;
         case 3 :
-            MaxMasuk(FirstMasuk);
+            MaxMasuk(head);
             break;
         case 4 :
-            MaxKeluar(FirstKeluar);
+            MaxKeluar(head);
             break;
         case 5:
             break;
         default : 
             std::cout << "Pilihan tidak tersedia!\n";
             break; 
+        
     }
+
 }
 
 int main(){
     int pilih;
     char pilih1;
+    listTanggal head;
     pMasuk masuk;
+    pTanggal tgl;
     pKeluar keluar;
-    listMasuk firstmasuk;
-    listKeluar firstkeluar;
     std::string data;
 
+    createListTgl(head);
     do{
     system("cls");
     std::cout << "==================================\n";
     std::cout << "           BUDGETIN AJA           \n";
     std::cout << "==================================\n";
-    std::cout << "1. Isi Pemasukkan                 \n";
-    std::cout << "2. Isi Pengeluaran                \n";
-    std::cout << "3. Tampilkan Pemasukan            \n";
-    std::cout << "4. Tampilkan Pengeluaran          \n";
-    std::cout << "5. Total Uang                     \n";
+    std::cout << "1. Tanggal Hari ini               \n";
+    std::cout << "2. Isi Pemasukkan                 \n";
+    std::cout << "3. Isi Pengeluaran                \n";
+    std::cout << "4. Tampilkan Pemasukan            \n";
+    std::cout << "5. Tampilkan Pengeluaran          \n";
     std::cout << "6. Data - data Keuangan           \n";
     std::cout << "Masukkan Pilihan : ";
     std::cin >> pilih;
@@ -228,23 +353,27 @@ int main(){
     switch (pilih)
     {
     case 1:
-        createElementmasuk(firstmasuk);
-        insertFirstMasuk(firstmasuk,masuk);
-         std::cout << "Kembali ke menu awal (y/n)?"; std::cin >> pilih1;
-        break;
-    case 2:
-        createElementKeluar(firstkeluar);
-        insertFirstKeluar(firstkeluar,keluar);
+        createElementTgl(tgl);
+        insertFirstTgl(head,tgl);
         break;
     case 3:
-        system("cls");
-        TampilkanPemasukan(firstmasuk);
+        InputPengeluaran(keluar);
+        insertFirstKeluar(head,data,keluar);
+        break;
+    case 2:
+        InputPemasukkan(masuk);
+        insertFirstMasuk(head,data,masuk);
         break;
     case 4:
         system("cls");
-        TampilkanPengeluaran(firstkeluar);
+        TampilkanPemasukan(head);
         break;
-     case 6:
+    case 5:
+        system("cls");
+        TampilkanPengeluaran(head);
+        break;
+    case 6:
+        system("cls");
         DataKeuangan();
         break;
     default : 
