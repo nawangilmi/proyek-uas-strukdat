@@ -86,8 +86,7 @@ void linearSearch(listTanggal First, std::string& tanggal, pTanggal& pCari){
 }
 
 void insertFirstMasuk(listTanggal& First, std::string tanggal,pMasuk pBaru){
-    // I.S List First mungkin kosong dan pBaru sudah terdefinisi
-    // F.S Elemen anak bertambah satu elemen di depan
+
     pTanggal pMasuk, pCari;
     int ketemu,id;
 
@@ -117,8 +116,7 @@ void insertFirstMasuk(listTanggal& First, std::string tanggal,pMasuk pBaru){
 }
 
 void insertFirstKeluar(listTanggal& First, std::string tanggal,pKeluar pBaru){
-    // I.S List First mungkin kosong dan pBaru sudah terdefinisi
-    // F.S Elemen anak bertambah satu elemen di depan
+
     pTanggal pKeluar, pCari;
     int ketemu,id;
 
@@ -274,7 +272,7 @@ void MaxKeluar(listTanggal& First){
     std::cout<<"       Uang Keluar Terbesar       \n";
 	std::cout<<"----------------------------------\n";
     pBantuTgl=First;
-    while (pBantuTgl != nullptr){ //loop ortu
+    while (pBantuTgl != nullptr){ 
         std::cout<< pBantuTgl->tgl <<std::endl;
         pBantuKeluar=pBantuTgl->firstKeluar;
         while (pBaru != NULL) {
