@@ -199,9 +199,7 @@ void DataKeuangan(){
         default : 
             std::cout << "Pilihan tidak tersedia!\n";
             break; 
-        
     }
-
 }
 
 int main(){
@@ -246,10 +244,7 @@ int main(){
         system("cls");
         TampilkanPengeluaran(firstkeluar);
         break;
-    case 6:
-        ;
-        break;
-     case 7:
+     case 6:
         DataKeuangan();
         break;
     default : 
