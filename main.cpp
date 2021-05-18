@@ -95,9 +95,41 @@ void TampilkanPengeluaran(listKeluar& First){
 void Total (){
 
 }
-void RatarataPemasukan(){}
+void RatarataPemasukan(listMasuk *first){
+     int count = 0;
+    int sum = 0;
+    float mean;
+    masuk curr = first; //
 
-void RatarataPengeluaran(){}
+     if (first == NULL){
+        std::cout << -1;} 
+    while (curr != NULL){
+        count++; 
+        sum += curr->uangmasuk; 
+        curr = curr->nextMasuk;
+    }
+    mean = (double)sum / count; //menghitung rata-rata
+  
+    std::cout << "Rata - Rata : "<< mean; //mengoutputkan nilai ratarata
+}
+
+void RatarataPengeluaran(listKeluar *first){
+    int count=0;
+    int sum = 0;
+    float mean;
+    keluar curr = first; //
+
+     if (first == NULL){
+        std::cout << -1;} 
+    while (curr != NULL){
+        count++; 
+        sum += curr->uangkeluar; 
+        curr = curr->nextKeluar;
+    }
+    mean = (double)sum/count; //menghitung rata-rata
+  
+    std::cout << "Rata - Rata : "<< mean; //mengoutputkan nilai ratarata
+}
 
 void MaxMasuk(listMasuk& First){
     char *max = 0;
@@ -110,11 +142,20 @@ void MaxMasuk(listMasuk& First){
     std::cout << "Pemasukkan Terbesar : " << max;     
     }
 
-void MaxKeluar(){}
-
+void MaxKeluar(listKeluar& First){
+    char *max = 0;
+    keluar pBaru ;
+    pBaru = First;
+        while (pBaru != NULL) {
+        if (pBaru->uangkeluar > max) 
+            max = pBaru->uangkeluar; 
+    }  pBaru = pBaru->nextKeluar;
+    std::cout << "Pengeluaran Terbesar : " << max;    
+}
 
 void DataKeuangan(){
-     listMasuk head;
+     listMasuk FirstMasuk;
+     listKeluar FirstKeluar;
     pMasuk masuk;
     pKeluar keluar;
     int pilih;
@@ -138,10 +179,10 @@ void DataKeuangan(){
             RatarataPengeluaran();
             break;
         case 3 :
-            MaxMasuk(head,masuk);
+            MaxMasuk(FirstMasuk);
             break;
         case 4 :
-            MaxKeluar();
+            MaxKeluar(FirstKeluar);
             break;
         case 5:
             break;
