@@ -35,12 +35,15 @@ void createElementmasuk(pMasuk& pBaru){
 }
 
 void insertFirstMasuk(listMasuk& First,pMasuk pBaru){
-if (First== nullptr) {
-		First=pBaru; 
-        } else { 
-		pBaru-> nextMasuk=First;
-		First=pBaru;
-	}
+if (First == nullptr){
+    First = pBaru;
+  } else{
+  	pMasuk temp = First;
+    while (temp->nextMasuk != nullptr) {
+      temp = temp->nextMasuk;
+    }
+    temp->nextMasuk = pBaru;
+  }
 }
 
 void createElementKeluar(pKeluar& pBaru){
@@ -51,12 +54,15 @@ void createElementKeluar(pKeluar& pBaru){
 }
 
 void insertFirstKeluar(listKeluar& First,pKeluar pBaru){
-if (First== nullptr) {
-		First=pBaru; 
-        } else { 
-		pBaru-> nextKeluar=First;
-		First=pBaru;
-	}
+if (First == nullptr){
+    First = pBaru;
+  } else{
+  	pKeluar temp = First;
+    while (temp->nextKeluar != nullptr) {
+      temp = temp->nextKeluar;
+    }
+    temp->nextKeluar = pBaru;
+  }
 }
 
 
@@ -64,14 +70,15 @@ void TampilkanPemasukan(listMasuk& First){
  if(First == nullptr){
      std::cout << "Data tidak tersedia!\n";
     } else {
-        masuk* pBantu;
+        pMasuk pBantu;
         pBantu = First;
         std::cout << "----------------------------\n";
         std::cout << "    TRANSAKSI UANG MASUK    \n";
         std::cout << "----------------------------\n";
         while (pBantu != nullptr){
-            std::cout << "Tanggal : " << pBantu->tanggal << std::endl;
-            std::cout << pBantu->uangmasuk << std::endl;
+            std::cout << "Tanggal       : " << pBantu->tanggal << std::endl;
+            std::cout << "Uang Masuk    :" << pBantu->uangmasuk << std::endl;
+             pBantu = pBantu->nextMasuk;
         }
     }
 }
@@ -80,14 +87,15 @@ void TampilkanPengeluaran(listKeluar& First){
  if(First == nullptr){
      std::cout << "Data tidak tersedia!\n";
     } else {
-        keluar* pBantu;
+        pKeluar pBantu;
         pBantu = First;
         std::cout << "----------------------------\n";
-        std::cout << "    TRANSAKSI UANG MASUK   \n";
+        std::cout << "    TRANSAKSI UANG KELUAR   \n";
         std::cout << "----------------------------\n";
         while (pBantu != nullptr){
-            std::cout << "Tanggal : " << pBantu->tanggal << std::endl;
-            std::cout << pBantu->uangkeluar << std::endl;
+            std::cout << "Tanggal       : " << pBantu->tanggal << std::endl;
+            std::cout << "Uang Masuk    :" << pBantu->uangkeluar << std::endl;
+            pBantu = pBantu->nextKeluar;
         }
     }
 }
@@ -197,10 +205,6 @@ void DataKeuangan(){
 }
 
 int main(){
-    int *max = 0;
-    int count = 0;
-    int sum = 0;
-    float mean;
     int pilih;
     char pilih1;
     pMasuk masuk;
@@ -228,6 +232,7 @@ int main(){
     case 1:
         createElementmasuk(firstmasuk);
         insertFirstMasuk(firstmasuk,masuk);
+         std::cout << "Kembali ke menu awal (y/n)?"; std::cin >> pilih1;
         break;
     case 2:
         createElementKeluar(firstkeluar);
