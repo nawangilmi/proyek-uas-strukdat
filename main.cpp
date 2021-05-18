@@ -1,6 +1,5 @@
 /* 
 Kelompok 3 :
-
  Aulia Rahmanita 140810200004
  Nawang Ilmi Adzani 140810200014
  Pujo Prayogo 1408102000038
@@ -103,23 +102,24 @@ void TampilkanPengeluaran(listKeluar& First){
 void Total (){
 
 }
+
 void RatarataPemasukan(listMasuk& First){
     int count = 0;
     int sum = 0;
     float mean;
     pMasuk curr;
-    First = curr;
+    curr = First;
 
-     if (First == NULL){
+     if (First == nullptr){
         std::cout << -1;} 
-    while (curr != NULL){
+    while (curr != nullptr){
         count++; 
         sum += curr->uangmasuk; 
         curr = curr->nextMasuk;
     }
-    mean = (double)sum / count; //menghitung rata-rata
+    mean = (double)sum / count;
   
-    std::cout << "Rata - Rata : "<< mean; //mengoutputkan nilai ratarata
+    std::cout << "Rata - Rata : "<< mean << std::endl;
 }
 
 void RatarataPengeluaran(listKeluar& First){
@@ -127,40 +127,40 @@ void RatarataPengeluaran(listKeluar& First){
     int sum = 0;
     float mean;
     pKeluar curr;
-    curr = First; //
+    curr = First;
 
-     if (First == NULL){
+    if (First == nullptr){
         std::cout << -1;} 
-    while (curr != NULL){
+    while (curr != nullptr){
         count++; 
         sum += curr->uangkeluar; 
         curr = curr->nextKeluar;
     }
-    mean = (double)sum/count; //menghitung rata-rata
+    mean = (double)sum/count;
   
-    std::cout << "Rata - Rata : "<< mean; //mengoutputkan nilai ratarata
+    std::cout << "Rata - Rata Pengeluaran : "<< mean << std::endl;
 }
 
 void MaxMasuk(listMasuk& First){
     int max = 0;
     pMasuk pBaru ;
     pBaru = First;
-        while (pBaru != NULL) {
+        while (pBaru != nullptr) {
         if (pBaru->uangmasuk > max) 
             max = pBaru->uangmasuk; 
     }  pBaru = pBaru->nextMasuk;
-    std::cout << "Pemasukkan Terbesar : " << max;     
+    std::cout << "Pemasukkan Terbesar : " << max << std::endl;     
     }
 
 void MaxKeluar(listKeluar& First){
     int max = 0;
     pKeluar pBaru ;
     pBaru = First;
-        while (pBaru != NULL) {
+        while (pBaru != nullptr) {
         if (pBaru->uangkeluar > max) 
             max = pBaru->uangkeluar; 
     }  pBaru = pBaru->nextKeluar;
-    std::cout << "Pengeluaran Terbesar : " << max;    
+    std::cout << "Pengeluaran Terbesar : " << max << std::endl;    
 }
 
 void DataKeuangan(){
